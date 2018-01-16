@@ -6,10 +6,10 @@
   "license": "{{ license }}",
   "scripts": {
     "dev": "parcel -p 8080 ./src/index.html",
-    "build": "parcel build ./src/index.html --public-url /"
     {{#if runner}}
-    "test": "jest"
+    "test": "jest",
     {{/if}}
+    "build": "parcel build ./src/index.html --public-url /"
   },
   "dependencies": {
     "vue": "^2.5.11"
