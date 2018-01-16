@@ -1,0 +1,61 @@
+{
+  "name": "{{ name }}",
+  "description": "{{ description }}",
+  "version": "1.0.0",
+  "author": "{{ author }}",
+  "license": "{{ license }}",
+  "scripts": {
+    "dev": "parcel -p 8080 ./src/index.html",
+    "build": "parcel build ./src/index.html --public-url /"
+    {{#if runner}}
+    "test": "jest"
+    {{/if}}
+  },
+  "dependencies": {
+    "vue": "^2.5.11"
+  },
+  {{#if runner}}
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "vue"
+    ],
+    "transform": {
+      "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
+      ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest"
+    },
+    "testRegex": "(/tests/unit/specs/.*|\\.(test|spec))\\.(vue|js)$",
+    "mapCoverage": true
+  },
+  {{/if}}
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "cross-env": "^5.0.5",
+    {{#if_eq style "sass"}}
+    "node-sass": "^4.7.2",
+    {{/if_eq}}
+    {{#if_eq style "stylus"}}
+    "stylus": "^0.54.5",
+    {{/if_eq}}
+    {{#if_eq style "less"}}
+    "less": "^2.7.3",
+    {{/if_eq}}
+    {{#if runner}}
+    "vue-jest": "^1.4.0",
+    "jest": "^22.0.4",
+    "babel-jest": "^22.0.4",
+    {{/if}}
+    {{#if eslint}}
+    "eslint": "^4.14.0",
+    "babel-eslint": "^8.2.1",
+    "parcel-plugin-eslint": "^1.0.0",
+    "eslint-plugin-html": "^4.0.1",
+    "eslint-plugin-vue": "^4.2.0",
+    "eslint-config-vue": "^2.0.2",
+    {{/if}}
+    "parcel-bundler": "^1.3.1",
+    "parcel-plugin-vue": "^1.4.0"
+  }
+}
